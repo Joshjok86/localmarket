@@ -10,9 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_17_132214) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_17_153619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sellers_id"
+    t.bigint "users_id"
+    t.index ["sellers_id"], name: "index_chatrooms_on_sellers_id"
+    t.index ["users_id"], name: "index_chatrooms_on_users_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "chatrooms_id"
+    t.index ["chatrooms_id"], name: "index_messages_on_chatrooms_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "product_name"
+    t.text "description"
+    t.integer "quantity"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sellers_id"
+    t.index ["sellers_id"], name: "index_products_on_sellers_id"
+  end
+
+  create_table "sellers", force: :cascade do |t|
+    t.string "email"
+    t.string "website"
+    t.string "social_media_link"
+    t.string "seller_name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phone_number"
+    t.string "address"
+    t.time "opening_time"
+    t.time "closing_time"
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_sellers_on_users_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
