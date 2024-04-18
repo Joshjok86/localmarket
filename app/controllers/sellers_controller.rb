@@ -19,7 +19,7 @@ class SellersController < ApplicationController
     if @seller.save
       redirect_to root_path, notice: 'New seller page successfully created'
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: 'Error - please try again'
     end
   end
 
@@ -30,7 +30,7 @@ class SellersController < ApplicationController
     if @seller.update(seller_strong_params)
       redirect_to root_path, notice: 'Seller details successfully updated'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, notice: 'Error - please try again'
     end
   end
 
