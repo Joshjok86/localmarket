@@ -12,13 +12,14 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
+  private
+
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :username, :address])
     devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :username, :address])
   end
-
-  private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
