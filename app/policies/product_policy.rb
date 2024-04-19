@@ -15,10 +15,10 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.seller.user == user
   end
 
   def destroy?
-    record.user == user
+    record.seller.user == user
   end
 end
