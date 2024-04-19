@@ -4,18 +4,23 @@ class ProductsController < ApplicationController
   before_action :set_seller, except: %i[index]
 
   def index
-    @products = Product.all
+    @products = policy_scope(Product)
   end
 
   def show
+    @product.seller = @seller
+    authorize @product
   end
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def create
     @product = Product.new(product_strong_params)
+    @product.user = current_user
+    authorize @product
     if @product.save
       redirect_to root_path, notice: 'New product successfully listed'
     else
@@ -24,9 +29,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    authorize @product
   end
 
   def update
+    authorize @product
     if @product.update(product_strong_params)
       redirect_to root_path, notice: 'Product details successfully updated'
     else
@@ -35,6 +42,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
     @product.destroy
     redirect_to root_path, status: :see_other, notice: 'Product has been removed from your listings'
   end
@@ -48,6 +56,7 @@ class ProductsController < ApplicationController
   def set_seller
     @seller = Seller.find(params[:seller_id])
     @product.seller = @seller
+    @product.seller.user = current_user
   end
 
   def set_product
