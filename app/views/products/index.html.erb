@@ -1,3 +1,15 @@
 <h1>Here is product index page</h1>
 <h3>products#index</h3>
+
+<% @products.each do |product| %>
+  <% if product.photos.present? %>
+    <% product.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+    <% end %>
+  <% end %>
+  <%= link_to product.product_name, seller_product_path(product.seller, product) %>
+  <%= product.price %>
+<% end %>
+
+
 <%= link_to "Home", root_path %>
