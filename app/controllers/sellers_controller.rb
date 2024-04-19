@@ -1,5 +1,5 @@
 class SellersController < ApplicationController
-  before_action :set_seller
+  before_action :set_seller, except: %i[index new]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index

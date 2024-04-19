@@ -33,12 +33,12 @@ class ProductsController < ApplicationController
   end
 
   def update
-    authorize @product
     if @product.update(product_strong_params)
       redirect_to root_path, notice: 'Product details successfully updated'
     else
       render :edit, status: :unprocessable_entity, notice: 'Error - please try again'
     end
+    authorize @product
   end
 
   def destroy

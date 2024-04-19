@@ -16,13 +16,13 @@
 <%# !!!!!! %>
 <%# Uncomment the below when pundit is merged to your branch! %>
 
-<%# if policy(@product).edit? %>
-  <%#= link_to "Edit your product details", edit_seller_product_path(@seller, @product) %>
-<%# end %>
+<% if policy(@product).edit? %>
+  <%= link_to "Edit your product details", edit_seller_product_path(@seller, @product) %>
+<% end %>
 
-<%# if policy(@product).destroy? %>
-  <%#= link_to "Remove your product listing", products_path(@seller, @product), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete this product listing?" } %>
-<%# end %>
+<% if policy(@product).destroy? %>
+  <%= link_to "Remove your product listing", delete_product_path(@seller, @product), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete this product listing?" } %>
+<% end %>
 
 
 <%= link_to "Home", root_path %>
