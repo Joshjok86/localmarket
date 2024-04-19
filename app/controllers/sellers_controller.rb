@@ -1,21 +1,23 @@
 class SellersController < ApplicationController
-  before_action :set_seller, only: %i[show edit update destroy]
+  before_action :set_seller
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @sellers = Seller.all
+    @sellers = policy_scope(Seller)
   end
 
   def show
+    authorize @seller
   end
 
   def new
     @seller = Seller.new
+    authorize @seller
   end
 
   def create
     @seller = Seller.new(seller_strong_params)
-    @seller.user = current_user
+    authorize @seller
     if @seller.save
       redirect_to root_path, notice: 'New seller page successfully created'
     else
@@ -24,9 +26,11 @@ class SellersController < ApplicationController
   end
 
   def edit
+    authorize @seller
   end
 
   def update
+    authorize @seller
     if @seller.update(seller_strong_params)
       redirect_to root_path, notice: 'Seller details successfully updated'
     else
@@ -35,6 +39,7 @@ class SellersController < ApplicationController
   end
 
   def destroy
+    authorize @seller
     @seller.destroy
     redirect_to root_path, status: :see_other, notice: 'Seller account has been deleted'
   end
@@ -43,6 +48,7 @@ class SellersController < ApplicationController
 
   def set_seller
     @seller = Seller.find(params[:id])
+    @seller.user = current_user
   end
 
   def seller_strong_params
