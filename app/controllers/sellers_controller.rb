@@ -52,6 +52,6 @@ class SellersController < ApplicationController
   end
 
   def seller_strong_params
-    params.require(:seller).permit(:seller_name, :description, :email, :website, :social_media_link, :phone_number, :address, :opening_time, :closing_time)
+    params.require(:seller).permit(:seller_name, :description, :email, :website, :social_media_link, :phone_number, :address, :opening_time, :closing_time, photos: [])
   end
 end
