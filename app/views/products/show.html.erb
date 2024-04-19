@@ -1,0 +1,28 @@
+<h1>Here is page to show the individual product and all it's details</h1>
+<h3>products#show</h3>
+
+<% if @product.photos.present? %>
+  <% @product.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+  <% end %>
+<% end %>
+
+<%= link_to @product.seller.seller_name, seller_path(@product.seller) %>
+<%= @product.product_name %>
+<%= @product.description %>
+<%= @product.price %>
+<%= @product.quantity %>
+
+<%# !!!!!! %>
+<%# Uncomment the below when pundit is merged to your branch! %>
+
+<%# if policy(@product).edit? %>
+  <%#= link_to "Edit your product details", edit_seller_product_path(@seller, @product) %>
+<%# end %>
+
+<%# if policy(@product).destroy? %>
+  <%#= link_to "Remove your product listing", products_path(@seller, @product), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete this product listing?" } %>
+<%# end %>
+
+
+<%= link_to "Home", root_path %>

@@ -1,3 +1,18 @@
 <h1>Here is "view all sellers" page</h1>
 <h3>sellers#index</h3>
+
+<% @sellers.each do |seller| %>
+  <%= link_to seller.seller_name, seller_path(seller) %>
+  <%= seller.address %>
+  <% if seller.photos.present? %>
+    <% seller.photos.first do |photo| %>
+      <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? == true %>
+  <%= link_to "Create a seller account", new_seller_path %>
+<% end %>
+
 <%= link_to "Home", root_path %>
