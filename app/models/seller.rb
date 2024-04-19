@@ -4,6 +4,6 @@ class Seller < ApplicationRecord
   has_many :messages, through: :chatrooms
   belongs_to :user
 
-  validates :email, :website, uniqueness: true
+  validates :email, :website, uniqueness: true, allow_nil: true
   validates :email, :description, :seller_name, :address, presence: true
 end
