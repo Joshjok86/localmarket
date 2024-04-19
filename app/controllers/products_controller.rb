@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_seller
-  before_action :set_product, only: %i[show edit update destroy]
+  before_action :set_product, except: %i[index]
+  before_action :set_seller, except: %i[index]
 
   def index
     @products = policy_scope(Product)
