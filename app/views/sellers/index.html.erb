@@ -16,3 +16,23 @@
 <% end %>
 
 <%= link_to "Home", root_path %>
+
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="sellers">
+        <% if @sellers.any? %>
+          <% @sellers.each do |seller| %>
+            <h4><%= seller.seller_name %></h4>
+            <p><%= seller.description %></p>
+          <% end %>
+        <% else %>
+          <em>Sorry, no sellers found.</em>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

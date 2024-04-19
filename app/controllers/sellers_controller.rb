@@ -4,6 +4,14 @@ class SellersController < ApplicationController
 
   def index
     @sellers = policy_scope(Seller)
+    @sellers = Seller.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        sellers.seller_name ILIKE :query
+        OR products.product_name ILIKE :query
+      SQL
+      @sellers = @sellers.joins(:products).where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show

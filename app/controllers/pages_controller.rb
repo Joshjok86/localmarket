@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     skip_authorization
   end
 
+
   def index
   end
 end
