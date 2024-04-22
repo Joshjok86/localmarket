@@ -5,10 +5,14 @@ ruby "3.1.2"
 # devise is a flexible authentication solution for Rails based on Warden
 gem "devise"
 
+# cloudinary is a cloud service that offers a solution to a web application's entire image management pipeline
 gem "cloudinary"
 
+# pundit is a simple authorization solution for Rails
 gem "pundit"
 
+# geocoder is a complete geocoding solution for Ruby
+gem "geocoder"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
