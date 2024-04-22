@@ -1,12 +1,25 @@
-<h1>Here is seller show page</h1>
-<h3>sellers#show</h3>
+<div class="container">
+  <div class="profilecontainer">
+    <div class="profileimage">
+      <img src="/assets/farmer_image.jpg" alt="Profile Image">
+    </div>
+    <div>
+      <h2>Ben</h2>
+    </div>
+    <div>
+      <p>Lorem ipsum dolor sit amet, consetetur
+        sadipscing elitr, sed diam nonumy eir
+        mod tempor invidunt ut labore et...</p>
+    </div>
+  </div>
+</div>
+
 
 <% if @seller.photos.present? %>
   <% @seller.photos.each do |photo| %>
     <%= cl_image_tag photo.key, width: 100, height: 100, crop: :fill %>
   <% end %>
 <% end %>
-
 <%= @seller.seller_name %>
 <%= @seller.description %>
 <%= @seller.address %>
@@ -15,16 +28,9 @@
 <%= @seller.phone_number %>
 <%= @seller.opening_time %>
 <%= @seller.closing_time %>
-
-<%# !!!!!! %>
-<%# Uncomment the below when pundit is merged to your branch! %>
-
-<%# if policy(@seller).edit? %>
-  <%#= link_to "Edit your seller profile details", edit_seller_path(@seller) %>
-<%# end %>
-
-<%# if policy(@seller).destroy? %>
-  <%#= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
-<%# end %>
-
-<%= link_to "Home", root_path %>
+<% if policy(@seller).edit? %>
+  <%= link_to "Edit your seller profile details", edit_seller_path(@seller) %>
+<% end %>
+<% if policy(@seller).destroy? %>
+  <%= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
+<% end %>
