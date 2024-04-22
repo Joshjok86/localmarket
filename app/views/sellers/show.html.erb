@@ -1,19 +1,19 @@
 <div class="container">
   <div class="profilecontainer">
-    <div class="profileimage">
-      <img src="/assets/farmer_image.jpg" alt="Profile Image">
-    </div>
     <div>
+      <img src="/assets/farmer_image.jpg" alt="Profile Image" class="profileimage">
+    </div>
+    <div class="profileinfo">
       <h2>Ben</h2>
-    </div>
-    <div>
       <p>Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eir
         mod tempor invidunt ut labore et...</p>
     </div>
+    <div class="msg-btn">
+      <button>Message</button>
+    </div>
   </div>
 </div>
-
 
 <% if @seller.photos.present? %>
   <% @seller.photos.each do |photo| %>
