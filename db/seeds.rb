@@ -10,7 +10,7 @@ puts "All done, nice and clean :) now seeding..."
 
 user = User.create!(email: "seed@seed.com", password: "123456", firstname: "Ben", lastname: "Farmer", username: "farmerben", address: "123 my home")
 
-seller = Seller.create!(user_id: user.id, description: "I sell fresh produce!", seller_name: "Ben's Farm", email: "bens@farm.com", phone_number: "1234567890", address: "Ben's Farm")
+seller = Seller.create!(user_id: user.id, description: "I sell fresh produce!", seller_name: "Ben's Farm", email: "bens@farm.com", phone_number: "1234567890", address: "Werderstr.13, 90489 Nuernberg")
 
 product = Product.create!(seller_id: seller.id, product_name: "eggs", description: "Fresh eggs from my own hens", price: 10.99, quantity: 100)
 
