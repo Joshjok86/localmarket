@@ -13,6 +13,7 @@
             class: "form-control",
             placeholder: "Type a keyword"
         %>
+      <%= select_tag :radius, options_for_select([['1 km', 1], ['5 km', 5], ['10 km', 10], ['50 km', 50], ['100 km', 100]], selected: params[:radius]), class: "form-control" %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
