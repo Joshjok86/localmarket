@@ -1,0 +1,90 @@
+.sellers-profile {
+  width: 50%;
+  margin: 200px auto;
+  height: 900px;
+  display: flex;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.profile-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #F5EFE6;
+  border: 2px solid black;
+  text-align: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.profile-image {
+  padding-bottom: 12px;
+  margin-top: 8px;
+  width: 50%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.msg-btn {
+  padding: 10px 20px;
+  border: 2px solid green;
+  border-radius: 4px;
+  background-color: green;
+  color: white;
+}
+
+.profile-description {
+  width: 80%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 24px;
+}
+
+.title-description {
+  margin: 16px auto;
+  width: 50%;
+}
+
+.info-description {
+  margin: 16px auto;
+  width: 50%;
+}
+
+.image-container {
+  margin: 16px auto;
+  width: 50%;
+  height: 300px;
+  background-image: url('https://as2.ftcdn.net/v2/jpg/02/21/34/43/1000_F_221344370_divU4PPEj49VhfthdlnAxA3rD3TAzuZT.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.description {
+  margin: 16px auto;
+  width: 50%;
+  padding-top: 36px;
+}
+
+.inline-style {
+  width: 50%;
+  display: flex;
+  margin: 16px auto;
+  flex-wrap: wrap;
+}
+
+.food-image {
+  padding: 16px;
+  width: 200px;
+  height: 200px;
+}
+
+
+.map-container {
+  width: 100%;
+  border: 1px solid black;
+  text-align: center;
+ }
