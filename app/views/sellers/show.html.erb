@@ -98,11 +98,3 @@
 <% end %>
 
 <%= link_to "Home", root_path %>
-
-<% if policy(@seller).edit? %>
-  <%= link_to "Edit your seller profile details", edit_seller_path(@seller) %>
-<% end %>
-<% if policy(@seller).destroy? %>
-  <%= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
-<% end %>
-
