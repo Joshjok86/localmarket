@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_123946) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_123348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_123946) do
     t.index ["seller_id"], name: "index_products_on_seller_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.float "rating"
+    t.bigint "user_id", null: false
+    t.bigint "seller_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_reviews_on_seller_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "sellers", force: :cascade do |t|
     t.string "email"
     t.string "website"
@@ -107,4 +119,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_123946) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "sellers"
+  add_foreign_key "reviews", "users"
 end
