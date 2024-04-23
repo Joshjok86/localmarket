@@ -1,19 +1,34 @@
-<div class="container">
-  <div class="profilecontainer">
+<div class="sellers-profile">
+  <div class="profile-container">
     <div>
-      <img src="/assets/farmer_image.jpg" alt="Profile Image" class="profileimage">
+      <img src="/assets/farmer_image.jpg" alt="Profile Image" class="profile-image">
     </div>
-    <div class="profileinfo">
+    <div class="profile-info">
       <h2>Ben</h2>
       <p>Lorem ipsum dolor sit amet, consetetur
         sadipscing elitr, sed diam nonumy eir
         mod tempor invidunt ut labore et...</p>
     </div>
-    <div class="msg-btn">
-      <button>Message</button>
+    <div>
+      <button class="msg-btn">Message</button>
+    </div>
+  </div>
+  <div class="profile-description">
+    <div>
+      <h2>Bens Farm</h2>
+    </div>
+    <div>
+      <img src="/assets/market-image.jpg" alt="Market Image" class="market-image">
+    </div>
+    <div>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et sam
+        et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+        Lorem ipsum d</p>
     </div>
   </div>
 </div>
+
 
 <% if @seller.photos.present? %>
   <% @seller.photos.each do |photo| %>
