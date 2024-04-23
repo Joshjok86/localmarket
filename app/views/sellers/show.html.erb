@@ -16,15 +16,40 @@
 <%= @seller.opening_time %>
 <%= @seller.closing_time %>
 
+
+<%# Reviews %>
+
+<% @seller.reviews.each do |review| %>
+  <%= review.title %>
+  <%= review.user.username %>
+  <%= review.content %>
+  <% if review.photos.present? %>
+    <% review.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, crop: :fill %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if policy(@review).new? %>
+  <h4>Leave a review for this seller</h4>
+  <%= simple_form_for [@seller, @review] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
+
 <%# !!!!!! %>
 <%# Uncomment the below when pundit is merged to your branch! %>
 
-<%# if policy(@seller).edit? %>
-  <%#= link_to "Edit your seller profile details", edit_seller_path(@seller) %>
-<%# end %>
+<% if policy(@seller).edit? %>
+  <%= link_to "Edit your seller profile details", edit_seller_path(@seller) %>
+<% end %>
 
-<%# if policy(@seller).destroy? %>
-  <%#= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
-<%# end %>
+<% if policy(@seller).destroy? %>
+  <%= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
+<% end %>
 
 <%= link_to "Home", root_path %>
