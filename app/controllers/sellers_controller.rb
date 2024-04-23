@@ -15,6 +15,7 @@ class SellersController < ApplicationController
   end
 
   def show
+    @review = Review.new
     authorize @seller
   end
 
