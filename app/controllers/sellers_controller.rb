@@ -16,6 +16,12 @@ class SellersController < ApplicationController
         @sellers = @sellers.near([user_location.latitude, user_location.longitude], params[:radius])
       end
     end
+    @markers = @sellers.geocoded.map do |seller|
+      {
+        lat: seller.latitude,
+        lng: seller.longitude
+      }
+    end
   end
 
   def show
