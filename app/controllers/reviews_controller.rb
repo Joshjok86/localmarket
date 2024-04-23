@@ -5,16 +5,19 @@ class ReviewsController < ApplicationController
   def show
     @reviews = Review.all(params[:id])
     @seller = @review.seller
+    authorize @review
   end
 
   def new
     @review = Review.new
+    authorize @review
   end
 
   def create
     @review = Review.new(review_strong_params)
     @review.seller = @seller
     @review.user = current_user
+    authorize @review
     if @review.save
       redirect_to root_path, notice: "Review submitted successfully"
     else
@@ -23,6 +26,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    authorize @review
     @review = Review.find(params[:id])
     if @review.destroy
       redirect_to root_path, status: :see_other, notice: "Review deleted"
