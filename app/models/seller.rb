@@ -4,6 +4,7 @@ class Seller < ApplicationRecord
 
   has_many :products, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :messages, through: :chatrooms
   belongs_to :user
 
