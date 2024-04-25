@@ -75,12 +75,12 @@
   <% end %>
 <% end %>
 
-<% if policy(@review).new? %>
+<% if policy(@review).create? %>
   <h4>Leave a review for this seller</h4>
   <%= simple_form_for [@seller, @review] do |f| %>
     <%= f.input :title %>
     <%= f.input :content %>
-    <%= f.input :rating %>
+    <%= f.input :rating, collection: 1..5, prompt: "Enter your rating for this seller" %>
     <%= f.submit "Submit review", class: "btn btn-primary" %>
   <% end %>
 <% end %>
@@ -98,11 +98,3 @@
 <% end %>
 
 <%= link_to "Home", root_path %>
-
-<% if policy(@seller).edit? %>
-  <%= link_to "Edit your seller profile details", edit_seller_path(@seller) %>
-<% end %>
-<% if policy(@seller).destroy? %>
-  <%= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
-<% end %>
-

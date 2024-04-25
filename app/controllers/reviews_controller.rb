@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
-  before_action :set_seller_review
+  before_action :set_seller_review, except: %i[show]
 
   def show
     @reviews = Review.all(params[:id])
