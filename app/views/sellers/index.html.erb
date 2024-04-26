@@ -1,29 +1,29 @@
 <h1>Here is "view all sellers" page</h1>
 <h3>Search results</h3>
 
-<div class="d-flex">
-  <div class="row d-flex justify-content-between">
-    <div class="">
-      <div class="sellers-results">
-        <% if @sellers.any? %>
-          <% @sellers.each do |seller| %>
-        <%= link_to seller.seller_name, seller_path(seller) %>
-        <%= seller.description %>
-        <% if seller.photos.present? %>
-          <% seller.photos.first do |photo| %>
-            <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
-          <% end %>
+<div class="search-container d-flex justify-content-between">
+
+  <div class="sellers-results border">
+    <div class="sellers-card border p-3 m-3 rounded-3">
+      <% if @sellers.any? %>
+        <% @sellers.each do |seller| %>
+      <%= link_to seller.seller_name, seller_path(seller) %>
+      <%= seller.description %>
+      <% if seller.photos.present? %>
+        <% seller.photos.first do |photo| %>
+          <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
         <% end %>
       <% end %>
-        <% else %>
-          <em>Sorry, no sellers found.</em>
-        <% end %>
-      </div>
+      <% end %>
     </div>
+      <% else %>
+        <em>Sorry, no sellers found.</em>
+      <% end %>
   </div>
-<div style="width: 70%; height: 100vh;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+
+  <div style="width: 70%; height: 100vh;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
