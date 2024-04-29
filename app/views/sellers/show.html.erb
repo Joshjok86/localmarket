@@ -105,4 +105,3 @@
 <% if policy(@seller).destroy? %>
   <%= link_to "Delete your seller profile", sellers_path(@seller), data: { turbo_method: :delete, turbo_confirm: "Sure you want to delete your seller profile?" } %>
 <% end %>
-
