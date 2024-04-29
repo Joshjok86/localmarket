@@ -11,9 +11,9 @@ class SellersController < ApplicationController
         OR products.product_name @@ :query
       SQL
       @sellers = @sellers.joins(:products).where(sql_subquery, query: "%#{params[:query]}%")
-      if params[:radius].present?
-        user_location = request.location
-        @sellers = @sellers.near([user_location.latitude, user_location.longitude], params[:radius])
+      if params[:latitude].present? && params[:longitude].present?
+        user_location = [params[:latitude], params[:longitude]]
+        @sellers = @sellers.near(user_location, params[:radius])
       end
     end
     @markers = @sellers.geocoded.map do |seller|
@@ -26,6 +26,7 @@ class SellersController < ApplicationController
   end
 
   def show
+    @review = Review.new
     authorize @seller
   end
 

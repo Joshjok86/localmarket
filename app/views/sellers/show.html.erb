@@ -75,12 +75,12 @@
   <% end %>
 <% end %>
 
-<% if policy(@review).new? %>
+<% if policy(@review).create? %>
   <h4>Leave a review for this seller</h4>
   <%= simple_form_for [@seller, @review] do |f| %>
     <%= f.input :title %>
     <%= f.input :content %>
-    <%= f.input :rating %>
+    <%= f.input :rating, collection: 1..5, prompt: "Enter your rating for this seller" %>
     <%= f.submit "Submit review", class: "btn btn-primary" %>
   <% end %>
 <% end %>
