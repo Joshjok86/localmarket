@@ -10,6 +10,13 @@
         class: "form-control",
         placeholder: "Type a keyword"
     %>
+  <%= text_field_tag :address,
+        params[:address],
+        class: "form-control",
+        id: "address-input",
+        placeholder: "Enter your address",
+        data: { target: "searchbar.address" }
+    %>
   <%= hidden_field_tag :latitude, params[:latitude], id: "latitude", data: { target: "searchbar.latitude" } %>
   <%= hidden_field_tag :longitude, params[:longitude], id: "longitude", data: { target: "searchbar.longitude" } %>
   <%= select_tag :radius, options_for_select([['1 km', 1], ['5 km', 5], ['10 km', 10], ['50 km', 50], ['100 km', 100]], selected: params[:radius]), class: "form-control" %>

@@ -5,6 +5,13 @@ class SellersController < ApplicationController
   def index
     @sellers = policy_scope(Seller)
     @sellers = Seller.all
+    if params[:address].present?
+      location = Geocoder.search(params[:address]).first
+      if location
+        params[:latitude] = location.latitude
+        params[:longitude] = location.longitude
+      end
+    end
     if params[:query].present?
       sql_subquery = <<~SQL
         sellers.seller_name @@ :query
