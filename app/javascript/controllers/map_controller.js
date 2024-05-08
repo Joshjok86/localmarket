@@ -22,6 +22,25 @@ export default class extends Controller {
     }
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     //                                     mapboxgl: mapboxgl }))
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+          enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserLocation: true,
+      showUserHeading: true
+    }));
+    const nav = new mapboxgl.NavigationControl();
+    this.map.addControl(nav, 'bottom-right');
+    // Get the latitude and longitude from the hidden fields
+    const latitude = parseFloat(document.getElementById('latitude').value)
+    const longitude = parseFloat(document.getElementById('longitude').value)
+    // If the latitude and longitude are valid, create a marker
+    if (!isNaN(latitude) && !isNaN(longitude)) {
+      new mapboxgl.Marker({ color: 'blue' })
+        .setLngLat([longitude, latitude])
+        .addTo(this.map)
+    }
   }
 
   #addMarkersToMap() {
