@@ -43,9 +43,10 @@
     </div>
   </div>
 
-  <div style="width: 70%; height: 100vh;"
+  <div style="width: 70%; height: 90vh;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-map-current-geocode-value="<%= [params[:latitude], params[:longitude]].to_json %>">
   </div>
 </div>
