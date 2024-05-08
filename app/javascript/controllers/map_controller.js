@@ -17,8 +17,9 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/standard"
     })
     this.#addMarkersToMap()
-    this.#fitMapToMarkers()
-
+    if (this.markersValue.length > 0) {
+      this.#fitMapToMarkers()
+    }
     // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     //                                     mapboxgl: mapboxgl }))
   }
