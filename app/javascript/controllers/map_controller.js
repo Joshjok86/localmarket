@@ -20,8 +20,7 @@ export default class extends Controller {
     if (this.markersValue.length > 0) {
       this.#fitMapToMarkers()
     }
-    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-    //                                     mapboxgl: mapboxgl }))
+
     this.map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
           enableHighAccuracy: true
@@ -51,7 +50,6 @@ export default class extends Controller {
         .setPopup(popup)
         .addTo(this.map)
     })}
-
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()

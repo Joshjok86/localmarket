@@ -8,7 +8,7 @@
   <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Type a keyword"
+        placeholder: "Type a product or seller name"
     %>
   <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>">
     <%= text_field_tag :address,
